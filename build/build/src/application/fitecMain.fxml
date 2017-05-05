@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLController">
+   <children>
+      <BorderPane layoutX="4.0" layoutY="9.0" prefHeight="400.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                  <Tab fx:id="libLivre" text="Livres">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" text="Livre" />
+                              <Separator layoutX="13.0" layoutY="30.0" prefHeight="3.0" prefWidth="559.0" />
+                              <PasswordField fx:id="motCleEditeur1" layoutX="63.0" layoutY="2.0" />
+                              <Button fx:id="reLivre" layoutX="212.0" layoutY="2.0" mnemonicParsing="false" text="Search" />
+                              <Button fx:id="creLivre" layoutX="269.0" layoutY="2.0" mnemonicParsing="false" text="Creer" />
+                              <Button fx:id="upLivre" layoutX="332.0" layoutY="2.0" mnemonicParsing="false" text="Modifier" />
+                              <Button fx:id="deLivre" layoutX="415.0" layoutY="2.0" mnemonicParsing="false" text="Supprimer" />
+                              <Pane layoutX="14.0" layoutY="33.0" prefHeight="332.0" prefWidth="555.0">
+                                 <children>
+                                    <TableView fx:id="gILivre" editable="true" layoutX="3.0" layoutY="14.0" prefHeight="318.0" prefWidth="549.0">
+                                       <columns>
+                                          <TableColumn fx:id="selectedLivre" prefWidth="26.0">
+                                             <graphic>
+                                                <CheckBox mnemonicParsing="false" />
+                                             </graphic>
+                                          </TableColumn>
+                                          <TableColumn fx:id="idLivre" prefWidth="33.0" text="Id" />
+                                          <TableColumn fx:id="titreLivre" prefWidth="136.0" text="Titre" />
+                                          <TableColumn fx:id="auteur" prefWidth="112.0" text="Auteur" />
+                                          <TableColumn fx:id="editeur" prefWidth="77.0" text="Editeur" />
+                                          <TableColumn fx:id="pages" prefWidth="82.0" text="Pages" />
+                                          <TableColumn fx:id="prix" prefWidth="82.0" text="Prix" />
+                                       </columns>
+                                       <padding>
+                                          <Insets bottom="10.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
+                                    </TableView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                                    <Tab fx:id="libAuteur" onSelectionChanged="#afficheAllAuteur" text="Auteur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" text="Auteur" />
+                              <Separator layoutX="13.0" layoutY="30.0" prefHeight="3.0" prefWidth="559.0" />
+                              <PasswordField fx:id="motCleAuteur" layoutX="63.0" layoutY="2.0" onAction="#handleSearch" />
+                              <Button fx:id="reAuteur" layoutX="212.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSearch" text="Search" />
+                              <Button fx:id="creAuteur" layoutX="269.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleCreate" text="Creer" />
+                              <Button fx:id="upAuteur" layoutX="332.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleUpdate" text="Modifier" />
+                              <Button fx:id="deAuteur" layoutX="415.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleDelete" text="Supprimer" />
+                              <Pane layoutX="14.0" layoutY="33.0" prefHeight="332.0" prefWidth="555.0">
+                                 <children>
+                                    <TableView fx:id="gIAuteurs" editable="true" layoutX="3.0" prefHeight="318.0" prefWidth="549.0">
+                                       <columns>
+                                          <TableColumn fx:id="selectedAuteur" prefWidth="46.0">
+                                             <graphic>
+                                                <CheckBox mnemonicParsing="false" />
+                                             </graphic>
+                                          </TableColumn>
+                                          <TableColumn fx:id="idAuteur" prefWidth="67.0" text="Id" />
+                                          <TableColumn fx:id="nomAuteur" minWidth="2.0" prefWidth="202.0" text="Nom" />
+                                          <TableColumn fx:id="prenomAuteur" prefWidth="227.0" text="Premon" />
+                                       </columns>
+                                       <padding>
+                                          <Insets bottom="10.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
+                                    </TableView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="libEditeur" onSelectionChanged="#afficheAllEditeur" text="Editeurs">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="6.0" text="Editeur" />
+                              <Separator layoutX="13.0" layoutY="30.0" prefHeight="3.0" prefWidth="559.0" />
+                              <PasswordField fx:id="motCleEditeur" layoutX="63.0" layoutY="2.0" onAction="#handleSearch" />
+                              <Button fx:id="reEditeur" layoutX="212.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSearch" text="Search" />
+                              <Button fx:id="creEditeur" layoutX="269.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleCreate" text="Creer" />
+                              <Button fx:id="upEditeur" layoutX="332.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleUpdate" text="Modifier" />
+                              <Button fx:id="deEditeur" layoutX="415.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleDelete" text="Supprimer" />
+                              <Pane layoutX="14.0" layoutY="33.0" prefHeight="332.0" prefWidth="555.0">
+                                 <children>
+                                    <TableView fx:id="gIEdieurs" editable="true" layoutX="3.0" prefHeight="318.0" prefWidth="549.0">
+                                      <columns>
+                                          <TableColumn fx:id="selectedEditeur" prefWidth="75.0">
+                                             <graphic>
+                                                <CheckBox fx:id="selectAll" mnemonicParsing="false" />
+                                             </graphic></TableColumn>
+                                        <TableColumn fx:id="idEditeur" prefWidth="274.0" text="Id" />
+                                        <TableColumn fx:id="nomEditeur" prefWidth="274.0" text="Nom" />
+                                      </columns>
+                                       <padding>
+                                          <Insets bottom="10.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
+                                    </TableView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
